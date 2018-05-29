@@ -8,6 +8,9 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+
+# Uncomment "jekyll" to host locally, uncomment "github-pages" to host on github.io page
+# Don't forget to run "bundle update" before "jekyll serve"
 #gem "jekyll", "~> 3.8.2"
 gem "github-pages", group: :jekyll_plugins		
 
