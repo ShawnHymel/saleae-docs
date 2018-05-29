@@ -24,8 +24,8 @@ github_username:  saleae
 
 # Build settings
 markdown: kramdown
-#theme: minimal-mistakes-jekyll
-remote_theme: "mmistakes/minimal-mistakes@4.11.2"
+theme: minimal-mistakes-jekyll
+#remote_theme: "mmistakes/minimal-mistakes@4.11.2"
 plugins:
   - jekyll-feed
   
