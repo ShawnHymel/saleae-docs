@@ -2,7 +2,7 @@
 
 These documents were built using [Jekyll](https://jekyllrb.com/).
 
-The built site can be viewed at [https://shawnhymel.github.io/saleae-docs/getting-started/](https://shawnhymel.github.io/saleae-docs/getting-started/).
+The built site can be viewed at [https://shawnhymel.github.io/saleae-docs/](https://shawnhymel.github.io/saleae-docs/).
 
 ## Directory Structure (well, the important ones)
 
