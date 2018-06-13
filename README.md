@@ -2,6 +2,8 @@
 
 These documents were built using [Jekyll](https://jekyllrb.com/).
 
+The built site can be viewed at [https://shawnhymel.github.io/saleae-docs/getting-started/](https://shawnhymel.github.io/saleae-docs/getting-started/).
+
 ## Directory Structure (well, the important ones)
 
  * **_pages/** - Your markdown files go in here
@@ -20,8 +22,6 @@ This will grab files from the *_pages/* and *assets/* directories, build static 
 
 ## Serve Website Locally
 
-Open **_config.yml**. Uncomment *theme* and comment out *remote-theme*.
-
 Open **Gemfile**. Uncomment *gem "jekyll"* and comment out *gem "github-pages"*.
 
 Run the following command:
@@ -32,12 +32,10 @@ Site available at [http://localhost:4000/](http://localhost:4000/).
     
 ## Serve on github-pages
 
-Open **_config.yml**. Uncomment *remote-theme* and comment out *theme*.
-
 Open **Gemfile**. Uncomment *gem "github-pages"* and comment out *gem "jekyll"*.
 
 In GitHub repository settings, make sure GitHub Pages is enabled and set **Source** to *master branch*.
 
 Git add, commit, and push to repository.
 
-Site available at https://<YOUR GITHUB USERNAME>.github.io/saleae-docs/
+Site available at https://\<YOUR GITHUB USERNAME\>.github.io/saleae-docs/
