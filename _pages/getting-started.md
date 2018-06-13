@@ -13,18 +13,33 @@ Here's what you've got.
 
 The logic analyzer is made up of...
 
+## Logic Software Installation
 
-## Example: Debugging UART
+### Mac
+
+### Windows
+
+### Linux
+
+## How to Measure GPIO Digital Logic
+
+## How to Analyze Communication Protocols
+
+### UART
 
 UART
 
-## Example: Debugging SPI
+### SPI
 
 SPI
 
-## Example: Debugging I2C
+### I2C
 
 I2C
+
+## Troubleshooting
+
+How to fix things
 
 ## Resources
 
