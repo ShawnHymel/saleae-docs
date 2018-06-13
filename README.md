@@ -22,7 +22,7 @@ This will grab files from the *_pages/* and *assets/* directories, build static 
 
 ## Serve Website Locally
 
-Open **Gemfile**. Uncomment *gem "jekyll"* and comment out *gem "github-pages"*.
+Open **Gemfile**. Uncomment `gem "jekyll"` and comment out `gem "github-pages"`.
 
 Run the following command:
 
@@ -32,7 +32,7 @@ Site available at [http://localhost:4000/](http://localhost:4000/).
     
 ## Serve on github-pages
 
-Open **Gemfile**. Uncomment *gem "github-pages"* and comment out *gem "jekyll"*.
+Open **Gemfile**. Uncomment `gem "github-pages"` and comment out `gem "jekyll"`.
 
 In GitHub repository settings, make sure GitHub Pages is enabled and set **Source** to *master branch*.
 
