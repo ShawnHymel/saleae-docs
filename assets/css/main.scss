@@ -21,3 +21,8 @@ html {
         font-size: 18px; // originally 22px
     }
 }
+
+img[src$="center"] {
+  display:block;
+  margin: 0 auto;
+}
