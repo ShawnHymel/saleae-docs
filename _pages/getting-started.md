@@ -37,7 +37,7 @@ For each header, the top row of pins are your signal pins. They are numbered 0-7
 
 %%%ANNOTATED FRONT OF ANALYZER--BLUR OUT PARTS%%%
 
-<div class="notice">
+<div class="notice--info">
     <b>Note:</b> The headers have a ground pin for each signal pin. For most low-speed or basic circuits, you can connect one ground pin as a reference for the whole circuit. If you want to measure high-speed digital signals or analog signals in a noisy environment, it's highly recommended that you connect a ground for each signal.
 </div>
 
