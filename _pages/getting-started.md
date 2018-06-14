@@ -20,14 +20,28 @@ To follow along with this guide, you will need the following equipment:
 %%%TODO: PHOTOS OF EACH%%%
 
  * One of Logic Analyzers
- * Nucleo-F446RE
- * SparkFun BME280
+ * Nucleo-F401RE
+ * SparkFun BME280 (or TMP102/MCP3002)
  * Breadboard
  * Hookup wires
 
 ## Hardware Overview
 
-The logic analyzer is made up of...
+The hardware component is a small box with a lot of processing power.
+
+%%%OVERVIEW SHOT OF ANAYLZER%%%
+
+On the front of your logic analyzer, you will find a set of headers used for connecting the cable harnesses, which come with your logic analyzer kit. You are welcome to use female jumper wires, as well, if you wish to individually connect pins.
+
+For each header, the top row of pins are your signal pins. They are numbered 0-7 (Logic 8) or 0-15 (Logic 16). All of the pins on the bottom row are intended to be connected to ground (or common) in your test circuit.
+
+%%%ANNOTATED FRONT OF ANALYZER--BLUR OUT PARTS%%%
+
+<div class="notice">
+    <b>Note:</b> The headers have a ground pin for each signal pin. For most low-speed or basic circuits, you can connect one ground pin as a reference for the whole circuit. If you want to measure high-speed digital signals or analog signals in a noisy environment, it's highly recommended that you connect a ground for each signal.
+</div>
+
+If you were to pry open (not recommended) your new Saleae Logic Analyzer, you would find a host of electronic components
 
 How to plug in cables.
 
@@ -41,9 +55,17 @@ Label cables/ports/pins.
 
 ### Linux
 
-## Simulating Digital Logic
+## Using the Simulator
 
-## How to Measure GPIO Digital Logic
+## Device Calibration
+
+### Automatically Download Calibration File
+
+### Manually Download Calibration File
+
+## How to Measure Analog Signals
+
+## How to Measure Digital Logic
 
 ## How to Analyze Communication Protocols
 
@@ -63,6 +85,12 @@ I2C
 
 How to fix things
 
+Ground Loops
+
+Contact Support
+
 ## Resources
 
 Check out these other guides.
+
+Datasheets, User's Guide, 
