@@ -20,7 +20,7 @@ To follow along with this guide, you will need the following equipment:
 %%%TODO: PHOTOS OF EACH%%%
 
  * One of Logic Analyzers
- * Nucleo-F401RE
+ * Nucleo-F446RE
  * SparkFun BME280 (or TMP102/MCP3002)
  * Breadboard
  * Hookup wires
@@ -52,6 +52,8 @@ If you only need to measure 1-4 signals, you can plug in just the first set of c
 </div>
 
 To help you identify the channels, the colors of the wires on the cable harness match up to the resistor code:
+
+%%%ANNOTATED WIRES AND COLORS%%%
 
 <table>
 <tr>
@@ -168,6 +170,10 @@ Plug your Saleae Logic Analyzer into your computer. When you open the Logic soft
 
 ### Automatically Download Calibration File
 
+Make sure your computer is connected to the Internet. With the Logic Analyzer plugged in, open the Logic software. Click on the **Options** button in the top-right corner. Click on **Preferences** and navigate to the **Calibration Info** tab. You should see the calibration information filled out for your device.
+
+![Automatically downloaded device calibration data]({{ site.baseurl }}/assets/images/getting-started/screen_05.png?style=center)
+
 ### Manually Download Calibration File
 
 If your Logic software is unable to download the calibration file (e.g. you do not have Internet access on the computer running Logic), you will need to download it manually. Open the Logic software and click on the **Options** button in the top-right corner. Click on **Preferences** and navigate to the **Calibration Info** tab. You should see that no calibration data is available for your device.
@@ -182,10 +188,20 @@ Replace {Insert Device ID here} with your actual Device ID. Note that you must c
 
 https://downloads.saleae.com/calibration/3b2e3a21ca4ad130.cal
 
-%%%TODO: COPY IT INTO FOLDER%%%
+Copy your .cal file and paste it into the software's calibration folder:
 
+ * **Windows 10/8/7/Vista:** C:\Users\YourUserName\AppData\Roaming\Saleae
+LLC\Logic\Calibration
+ * **Windows XP:** C:\Documents and Settings\YourUserName\Application Data\Saleae
+LLC\Logic\Calibration
+ * **Mac:** /Users/YourUserName/Library/Preferences/Saleae/Calibration
+ * **Linux:** Create a directory named *Calibration* in the same directory as the *Logic* executable. Paste the .cal file into the newly created *Calibration* directory.
+
+Restart the Logic software and verify that the calibration file was loaded successfully (Options > Preferences, Calibration Info tab).
 
 ## How to Measure Analog Signals
+
+One helpful feature of your Saleae Logic Analyzer is its ability to measure analog signals (from 0 to 5 V). 
 
 ## How to Measure Digital Logic
 
@@ -202,6 +218,8 @@ SPI
 ### I2C
 
 I2C
+
+![Installing Saleae Logic on macOS]({{ site.baseurl }}/assets/images/getting-started/test_circuit_01.png?style=center)
 
 ## Troubleshooting
 
