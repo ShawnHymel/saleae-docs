@@ -129,7 +129,7 @@ If you run into any issues, you can try downloading the [Windows Standalone rele
 
 After downloading the application, double-click on its icon, and drag the Logic.app into the Applications folder.
 
-![Installing Saleae Logic on macOS](/assets/images/getting-started/mac_install.png?style=center)
+![Installing Saleae Logic on macOS]({{ site.baseurl }}/assets/images/getting-started/mac_install.png?style=center)
 
 ### Linux
 
@@ -150,15 +150,15 @@ Navigate back into the extracted directory and run the *Logic* application, eith
 
 If you don't have access to the Logic Analyzer hardware yet, you can still use the software in simulation mode to understand how it works. Make sure the Logic Analyzer is not plugged in to your computer, and open the Saleae Logic software. Click the **Start Simulation** button in the top left corner.
 
-![Running a simulation in the Saleae Logic software](/assets/images/getting-started/screen_01.png?style=center)
+![Running a simulation in the Saleae Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_01.png?style=center)
 
 Use your mouse wheel or minus (-) key to zoom out. Click and drag on the main display to move the captured waveforms in the time domain. Hover your mouse pointer over some of the digital waveforms, Logic will give you an automatic reading of the width (w) of the high or low pulse in seconds (s), milliseconds (ms), or microseconds (μs). It will also take the measurement of the next pulse to give you an estimate of the frequency (f) and period (τ).
 
-![Analyzing digital pulses in the Saleae Logic simulation](/assets/images/getting-started/screen_02.png?style=center)
+![Analyzing digital pulses in the Saleae Logic simulation]({{ site.baseurl }}/assets/images/getting-started/screen_02.png?style=center)
 
 Scroll down either by holding *Shift* and using your mouse wheel or by clicking and dragging on the translucent scroll bar on the right side of the main waveforms pane. Zoom in (mouse wheel or + key) and hover your mouse over the sine wave. You should get a pop-up showing you the analog voltage at that time.
 
-![Analyzing an analog waveform in the Saleae Logic simulation](/assets/images/getting-started/screen_03.png?style=center)
+![Analyzing an analog waveform in the Saleae Logic simulation]({{ site.baseurl }}/assets/images/getting-started/screen_03.png?style=center)
 
 ## Device Calibration
 
@@ -172,7 +172,7 @@ Plug your Saleae Logic Analyzer into your computer. When you open the Logic soft
 
 If your Logic software is unable to download the calibration file (e.g. you do not have Internet access on the computer running Logic), you will need to download it manually. Open the Logic software and click on the **Options** button in the top-right corner. Click on **Preferences** and navigate to the **Calibration Info** tab. You should see that no calibration data is available for your device.
 
-![Identifying your Saleae Logic Analyzer serial ID](/assets/images/getting-started/screen_04.png?style=center)
+![Identifying your Saleae Logic Analyzer serial ID]({{ site.baseurl }}/assets/images/getting-started/screen_04.png?style=center)
 
 Copy or write down your *Device ID*. On a computer with Internet access, open a browser and navigate to
 

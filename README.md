@@ -1,6 +1,6 @@
 # saleae-docs
 
-These documents were built using [Jekyll](https://jekyllrb.com/).
+These documents were built using [Jekyll](https://jekyllrb.com/) and made with the [Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/).
 
 The built site can be viewed at [https://shawnhymel.github.io/saleae-docs/](https://shawnhymel.github.io/saleae-docs/).
 
