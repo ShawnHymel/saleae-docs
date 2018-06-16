@@ -78,7 +78,7 @@ Your kit also comes with test clips for each lead on the cable harness. Attach t
 
 If you were to pry open your Logic Analyzer (not recommended), you would find a Xilinx Spartan 6 FPGA and an 8-channel analog-to-digital converter (2 ADCs on the Logic Pro 16). Together, these work in tandem to sample signals and stream data back to your computer for analysis in the Logic software.
 
-![Opened Saleae Logic 8](/assets/images/getting-started/logic_8_open.png?style=center)
+![Opened Saleae Logic 8]({{ site.baseurl }}/assets/images/getting-started/logic_8_open.png?style=center)
 
 Depending on the model you have, the features may be different:
 
