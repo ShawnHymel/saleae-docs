@@ -227,7 +227,7 @@ Connect the wires to the male header pins on the Nucleo board as shown in the di
 
 Download the example code for your IDE:
 
- * [Digital Example - Arduino]({{ site.baseurl }}/assets/code/digital_example_arduino.ino)
+ * [Digital Example - Arduino]({{ site.baseurl }}/assets/code/digital_example_arduino.zip)
  * [Digital Example - mbed]({{ site.baseurl }}/assets/code/digital_example_mbed.zip)
  * [Digital Example - SW4STM32]({{ site.baseurl }}/assets/code/digital_example_sw4stm32.zip)
  
