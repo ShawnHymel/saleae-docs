@@ -117,6 +117,10 @@ Depending on the model you have, the features may be different:
 </tr>
 </table>
 
+<div class="notice--warning">
+    <b>Warning:</b> The logic analyzer needs to send a lot of data very quickly over the USB lines. As a result, it is recommended that you plug the logic analyzer directly into an available USB port on your computer (i.e. not through a USB hub). Otherwise, you might get an error such as "We're sorry, but the device was not able to keep up with this sample rate."
+</div>
+
 ## Logic Software Installation
 
 Download the Saleae Logic software by navigating to the [Salaea Downloads page](https://www.saleae.com/downloads/). Select your operating system, and click the download button.
@@ -199,11 +203,85 @@ LLC\Logic\Calibration
 
 Restart the Logic software and verify that the calibration file was loaded successfully (Options > Preferences, Calibration Info tab).
 
+## How to Measure Digital Logic
+
+The easiest way to test your logic analyzer is to use it to measure digital signals, that is, voltages that transition between two discrete values, such as 0 V and 3.3 V.
+
+To demonstrate this, we have example code for the STM32 Nucleo-F446RE that can be uploaded via [Arduino](https://www.arduino.cc/), [mbed](https://os.mbed.com/), or as a project for the [AC6 System Workbench for STM32 (SW4STM32)](http://www.openstm32.org/) integrated development enviroment (IDE).
+
+### Connect Hardware
+
+To begin, plug 2 cable harnesses into your Saleae Logic. Note that the arrow on the harness connector should be facing up and toward the left (the 'S' in Saleae on your logic analyzer). While the colors of the wires do not ultimately matter, it can be helpful to have them line up with the resistor color code (from left to right): black, brown, red, orange, yellow, green, blue, violet.
+
+%%%CLOSE UP OF PLUGGING IN HARNESSES%%%
+
+Connect the wires to the male header pins on the Nucleo board as shown in the diagram. Note that most of the inner male pins are connected to the female pins in the Arduino UNO configuration. For a full pinout of the Nucleo-F446RE, refer to the [pinout section on the mbed page](https://os.mbed.com/platforms/ST-Nucleo-F446RE/#nucleo-pinout).
+
+<div class="notice--info">
+    Having trouble seeing the diagram? Click on the image to get a better view.
+</div>
+
+[![Connect Saleae logic analyzer to development board to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)
+
+### Run Demo Application
+
+Download the example code for your IDE:
+
+ * [Digital Example - Arduino]({{ site.baseurl }}/assets/code/digital_example_arduino.ino)
+ * [Digital Example - mbed]({{ site.baseurl }}/assets/code/digital_example_mbed.zip)
+ * [Digital Example - SW4STM32]({{ site.baseurl }}/assets/code/digital_example_sw4stm32.zip)
+ 
+<div class="notice--info">
+    <b>Note:</b> If you would like to try running the code without installing any IDE, download the mbed example. Plug in your Nucleo board, and it should enumerate as a USB mass storage device on your computer. Unzip the example, and copy the .bin file to the Nucleo drive. The Nucleo board will reset, and the program will begin to run automatically.
+</div>
+
+Open the demo in your chosen IDE. Compile the program, and upload it to the Nucleo-F446RE development board. Whenever the board has power, it should begin running the digital example program, which counts in binary on pins D2-D9 (D2 is least significant bit).
+
+### Measure Signals
+
+Open the Logic software and make sure your logic analyzer is connected via USB (you should see "Connected" appear at the top of the window). Click on the **Device Settings Button** (the up/down arrow near *Start Simulation*). This will open the device settings window.  
+
+Set the speed to **at least 50 MS/s** and the duration to **1 second** (length of time the analyzer will collect data). Click to enable **8 digital channels** (0 through 7 in the top row). Make sure **3.3+ Volts** is selected.
+
+![Configuring logic analyzer to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/screen_06.png?style=center)
+
+Click the **Device Settings Button** again to close the configuration window. You should see all 8 channels appear on the left side. Click **Start**. The software should take a moment to collect data, and show you the results to the right of their respective channels.
+
+![Capturing digital signals with the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_07.png?style=center)
+
+Zoom in using your mouse wheel or the plus (+) key. Hover your mouse over a part of the waveform from Channel 0. You should see some text pop up, giving you some information about the pulses. The Logic software will automatically calculate the puslse width (w), the frequency (f), and the period (τ).
+
+![Measuring pulse width, frequency, and period with Saleae Logic]({{ site.baseurl }}/assets/images/getting-started/screen_08.png?style=center)
+
+### Using the Trigger
+
+Sometimes, you need to measure a pulse or signal that happens sporadically. If you are unable to time the capture appropriately (e.g. within the 1 second capture time), you can use *triggers* to start the capture process whenever a channel changes state.
+
+For example, we will configure the Logic software to begin capturing whenever Channel 7 (the most significant bit in our counter) switches from high to low (falling edge). This will center the capturing process around the point (t = 0) when the counter rolls over from 255 (0xFF) to 0 (0x00).
+
+By default, the logic analyzer should be configured to trigger on a rising edge for Channel 0. Click on the **Trigger Settings Button** for Channel 0 and click on the **Rising Edge** button, which should disable all triggers for the analyzer. Verify that the trigger buttons for all channels change to the rising edge icon.
+
+![Disable triggers in the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_09.png?style=center)
+
+Click on the **Trigger Settings Button** for Channel 7. Select the **Trigger on Falling Edge** button.
+
+![Enable triggering on falling edge in the Saleae Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_10.png?style=center)
+
+Press the **Start** button and wait while the logic analyzers captures and processes data. Waveforms should appear in the main window pane. Zoom in around the trigger point, which should read *0 s : 0 ms : 0μs*. You should see that the falling edge of Channel 7 lines up with this point (origin in time).
+
+![Viewing a waveform that has been captured around a trigger]({{ site.baseurl }}/assets/images/getting-started/screen_11.png?style=center)
+
+If you pan left on the waveforms, you should see that the logic analyzer is capable of capturing up to about 0.5 ms prior to the trigger point.
+
+<div class="notice--info">
+    <b>Note:</b> If you zoom in around the trigger point, you should see that not all pins on the microcontroller are capable of toggling at the exact same time. If you're curious about how to measure that time difference, keep reading! In the "How to Measure Analog Signals" section, we use the Timing Markers to measure differences in time. 
+</div>
+
 ## How to Measure Analog Signals
 
-One helpful feature of your Saleae Logic Analyzer is its ability to measure analog signals (from 0 to 5 V). 
+One useful feature of your Saleae Logic Analyzer is its ability to measure analog signals (from 0 to 5 V).  As such, it can function as an oscilloscope with up to 8 channels (for the Logic 8 and Logic Pro 8) or 16 channels (for the Logic Pro 16).
 
-## How to Measure Digital Logic
+Depending on the number of channels you use, the Logic 8 can sample up to 10 MS/s (bandwidth of 1 MHz). The Logic Pro 8 and Logic Pro 16 can sample up to 50 MS/s (bandwitch of 5 MHz).
 
 ## How to Analyze Communication Protocols
 
