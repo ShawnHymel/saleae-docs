@@ -283,6 +283,28 @@ One useful feature of your Saleae Logic Analyzer is its ability to measure analo
 
 Depending on the number of channels you use, the Logic 8 can sample up to 10 MS/s (bandwidth of 1 MHz). The Logic Pro 8 and Logic Pro 16 can sample up to 50 MS/s (bandwitch of 5 MHz).
 
+Example code is provided below for Arduino, mbed, and AC6 System Workbench.
+
+### Connect Hardware
+
+For this example, you will only need 1 harness plugged into your logic analyzer. We will be using channel 0. Connect the channel 0 and GND wires to the Nucleo board as shown below. Note that pin PA_4 (A2 on the Arduino headers) is DAC_OUT1 (digital-to-analog converter output 1) on the Nucleo-F446RE.
+
+[![Connect Saleae logic analyzer to development board to measure analog signals]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)
+
+### Run Demo Application
+
+Download the example code for your IDE:
+
+ * [Analog Example - Arduino]({{ site.baseurl }}/assets/code/analog_example_arduino.zip)
+ * [Analog Example - mbed]({{ site.baseurl }}/assets/code/analog_example_mbed.zip)
+ * [Analog Example - SW4STM32]({{ site.baseurl }}/assets/code/analog_example_sw4stm32.zip)
+
+Open the demo in your chosen IDE. Compile the program, and upload it to the Nucleo-F446RE development board. Whenever the board has power, it should begin running the analog example program, which produces a sinewave pattern on pin PA_4 (Arduino pin A2).
+
+### Measure the Signal
+
+
+
 ## How to Analyze Communication Protocols
 
 ### UART
