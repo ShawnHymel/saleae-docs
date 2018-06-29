@@ -303,9 +303,35 @@ Open the demo in your chosen IDE. Compile the program, and upload it to the Nucl
 
 ### Measure the Signal
 
+Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
 
+In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click the **analog Channel 0** to enable it, and click the **digital Channel 0** to disable it.
 
-## How to Analyze Communication Protocols
+![Enable analog channel in Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_12.png?style=center)
+
+Click the **Device Settings Button** again to close the configuration window. Click **Start** to begin collecting data. After a moment, you should see a sinewave appear in the main window. Note that you might have to zoom out. If you hover your mouse over the sinewave, you should see the measured voltage at that time pop up.
+
+![Measuring the analog voltage level on a sinewave with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_13.png?style=center)
+
+If you would like to measure the time between two points on the signal, you can select the A1 and A2 markers underneath the *Timing Marker Pair* tab on the right side. Click the **A1** button, which will put a marker on your cursor. Click on a peak in the waveform. Click on **A2**, which will put another marker on your cursor. Find an adjacent peak to place the second marker. You should see the time difference between those points appear next to the A1 and A2 buttons.
+
+![Measuring the time difference between two points on a sinewave]({{ site.baseurl }}/assets/images/getting-started/screen_14.png?style=center)
+
+As you can see, the period is measured to be about 10 ms, which is close to the 100 Hz we set in the demo programs.
+
+## How to Analyze UART
+
+Universal Asynchronous Receiver/Transmitter (UART) is a fairly simple protocol with two lines (transmit and receive) going between two devices. The lines are normally held high until one of the devices wish to communicate. At which point, the transmitting device pulls its transmit line low and sends out data with logic high being 1 and logic low being 0.
+
+### Connect Hardware
+
+Note that on the Nucleo-F446RE, the UART lines used to communicate with the host computer are connected to the programming chip next to the USB connector. Arduino pins RX/D0 and TX/D1 are disconnected from these lines by default, which means we need to use the RX and TX pins near the programming chip.
+
+Connect the GND wire to an available ground pin on the Nucleo. Connect Channel 0 to TX and connect Channel 1 to RX.
+
+%%%FRITZING%%%
+
+### Run Demo Application
 
 ### UART
 
