@@ -329,19 +329,65 @@ Note that on the Nucleo-F446RE, the UART lines used to communicate with the host
 
 Connect the GND wire to an available ground pin on the Nucleo. Connect Channel 0 to TX and connect Channel 1 to RX.
 
-%%%FRITZING%%%
+[![Connect Saleae logic analyzer to development board to measure serial signals]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
-### UART
+Download the example code for your IDE:
 
-UART
+ * [UART Example - Arduino]({{ site.baseurl }}/assets/code/uart_example_arduino.zip)
+ * [UART Example - mbed]({{ site.baseurl }}/assets/code/uart_example_mbed.zip)
+ * [UART Example - SW4STM32]({{ site.baseurl }}/assets/code/uart_example_sw4stm32.zip)
 
-### SPI
+Open the demo in your chosen IDE. Compile the program, and upload it to the Nucleo-F446RE development board.
+
+Download and open a serial terminal program. Here are some suggestions:
+
+ * Windows: [PuTTY](https://www.putty.org/), [Tera Term](https://ttssh2.osdn.jp/index.html.en)
+ * Mac: [Serial](https://decisivetactics.com/products/serial/), [CoolTerm](http://freeware.the-meiers.org/)
+ * Linux: [screen](https://www.gnu.org/software/screen/manual/screen.html), [Terminator](https://launchpad.net/terminator)
+ 
+Connect to the Nucleo board over the assigned serial port with a baud rate of **115200**, 8 data bits, no parity bit, and 1 stop bit (**8-N-1**). Once you open the connection, anything you type should be echoed back to you.
+
+![Testing the serial echo program]({{ site.baseurl }}/assets/images/getting-started/screen_15.png?style=center)
+
+### Measure the Signal
+
+Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+
+In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click the **digital Channel 1** to enable it as well.
+
+![Setting up to capture UART signals with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_16.png?style=center)
+
+Click the **Device Settings Button** again to close the configuration window. With this setup, channel 0 is configured to capture UART data going from your computer to the Nucleo board (TX on the Nucleo), and channel 1 is configured to capture data from the Nucleo to your computer (RX on the Nucleo).
+
+By default, triggering is set to occur on the rising edge of channel 0. UART is by default high, so we want to start capturing whenever the TX line drops low (*start bit*). Click the **Trigger Button** next to *Channel 0* to bring up the *Trigger Settings* pop-up. Select the **Trigger on Falling Edge** option.
+
+![Select falling edge option for triggering with the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_17.png?style=center)
+
+Click on the **Trigger Button** again to close the pop-up. Click **Start**, and you should see the Logic software tell you that it is waiting for a trigger.
+
+Back in your serial terminal program, type the letter 'a'. The Logic software should begin capturing data and then show you the results.
+
+![Captured UART data]({{ site.baseurl }}/assets/images/getting-started/screen_18.png?style=center)
+
+Click on the plus button (**+**) next to *Analyzers* on the right side of the Logic software. Select **Async Serial** to bring up the Serial settings window. Select **0 - 'Channel 0'** for *Serial*, change the bit rate to **115200**, and leave the rest alone.
+
+![Configure the analyzer settings]({{ site.baseurl }}/assets/images/getting-started/screen_19.png?style=center)
+
+Repeat this process to add an additional analyzer, but set the channel to **1 - 'Channel 1'**.
+
+You should see two "Async Serial" bars appear under the *Analyzers* pane. Additionally, the captured serial data should both have the letter 'a' over them. This shows that you captured the ASCII letter 'a' going from the computer to the Nucleo and the same letter being echoed back.
+
+![Analyzing captured serial data with the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_20.png?style=center)
+
+Try measuring the time it takes for your Nucleo to capture and echo a letter, and see if you can type a few more letters during the capture period and decode them.
+
+## SPI
 
 SPI
 
-### I2C
+## I2C
 
 I2C
 
