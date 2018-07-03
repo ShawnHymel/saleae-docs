@@ -64,7 +64,7 @@ To help you identify the channels, the colors of the wires on the cable harness 
     <th style="text-align:center; background-color:yellow">Ch 4</th>
     <th style="text-align:center; background-color:green">Ch 5</th>
     <th style="text-align:center; background-color:blue">Ch 6</th>
-    <th style="text-align:center; background-color:violet">Ch 7</th>
+    <th style="text-align:center; background-color:purple">Ch 7</th>
 </tr>
 </table>
 
@@ -383,9 +383,37 @@ You should see two "Async Serial" bars appear under the *Analyzers* pane. Additi
 
 Try measuring the time it takes for your Nucleo to capture and echo a letter, and see if you can type a few more letters during the capture period and decode them.
 
-## SPI
+## How to Analyze SPI
 
-SPI
+Serial Peripheral Interface (SPI) is a communication protocol often used between processors and devices that require a relatively fast interface, such as shift registers, flash memory, and some sensors. It is a *synchronous* protocol, which means it requires a separate clock line so that the transmitter can tell the receiver when to sample the data line.
+
+Interestingly, SPI connections often rely on two data lines: MISO and MOSI. Because of this, data can be sent between the master and device at the same time (known as *full duplex*).
+
+### Connect Hardware
+
+Even though the Nucleo-F446RE has an onboard analog-to-digital converter (ADC), the MCP3002 is an easy-to-use and inexpensive ADC that communicates over SPI, which makes it perfect for demonstrating the protocol.
+
+Connect the Nucleo to the MCP3002 and the MCP3002 to a 10k potentiometer as shown. Note that the SPI pins are also broken out to the male pins just to the right of the female Arduino headers on the Nucleo. This allows us to attach the Saleae logic analyzer wires.
+
+[![Connect Saleae logic analyzer to development board to measure SPI signals]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)
+
+### Run Demo Application
+
+Download the example code for your IDE:
+
+ * [SPI Example - Arduino]({{ site.baseurl }}/assets/code/spi_example_arduino.zip)
+ * [SPI Example - mbed]({{ site.baseurl }}/assets/code/spi_example_mbed.zip)
+ * [SPI Example - SW4STM32]({{ site.baseurl }}/assets/code/spi_example_sw4stm32.zip)
+
+Open the demo in your chosen IDE. Compile the program, and upload it to the Nucleo-F446RE development board.
+
+Open the serial terminal program that you downloaded from the UART example.
+ 
+Connect to the Nucleo board over the assigned serial port with a baud rate of **115200**, 8 data bits, no parity bit, and 1 stop bit (**8-N-1**). Open the connection, and you should see the voltage from the MCP3002 being reported to you in regular intervals. Try turning the knob on the potentiometer to see the voltage change.
+
+![Testing the serial echo program]({{ site.baseurl }}/assets/images/getting-started/screen_21.png?style=center)
+
+### Measure the Signal
 
 ## I2C
 
