@@ -415,6 +415,30 @@ Connect to the Nucleo board over the assigned serial port with a baud rate of **
 
 ### Measure the Signal
 
+Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+
+In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click **digital Channels 1-3** to enable them.
+
+![Setting up to capture SPI signals with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_22.png?style=center)
+
+We can set up the analyzer before we capture so that we can choose the appropriate signal as the trigger. Click on the plus button (**+**) next to *Analyzers* on the right side. Select **SPI** to bring up the settings window. Leave everything as default and click **Save**.
+
+![Setting the SPI lines in the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_23.png?style=center)
+
+The *Enable* line (also known as *CS* or *SS*) is often the first signal to change prior to data being transmitted on a SPI bus. As a result, we'll set our trigger on that line. Click on the **Trigger Button** next to *Channel 3 (SPI - ENABLE)*, and select the **Trigger on Falling Edge** option.
+
+![Selecting a falling edge trigger for the SPI Enable line]({{ site.baseurl }}/assets/images/getting-started/screen_24.png?style=center)
+
+Click on the **Trigger Button** again to close the pop-up. Click **Start** to begin collecting data. Because our code is set to send SPI data every 0.2 seconds, data collection should begin almost immediately.
+
+Zoom in around the *0 s : 0 ms : 0 μs* mark, and you should see the waveforms that traveled across the SPI bus at that moment. Click on the *gear icon* next to *SPI* under *Analyzers*. Click on **Bin** under *Display Radix* to show the interpreted data as binary.
+
+Above Channel 0 (MOSI), you should see the data that we are transmitting out from the Nucleo board: 0b11000000 for the first byte, and all 0s for the second byte. At the same time, data comes back in from the MCP3002 on Channel 1 (MISO). In this instance, only bits 1-10 carry information about the measured voltage.
+
+![Reading SPI data with the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_25.png?style=center)
+
+Adjust the potentiometer and see if you get different data on the MISO line when you sample again.
+
 ## I2C
 
 I2C
