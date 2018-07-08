@@ -9,7 +9,7 @@ toc: true
 
 The Saleae Logic Analyzer is a powerful tool capable of capturing multiple signals from a digital circuit and displaying that information in the form of timing diagrams. Saleae's *Logic* software can help you decode a variety of digital protocols, including UART, SPI, I<sup>2</sup>C, 1-Wire, I<sup>2</sup>S, CAN, USB, and many more. These features can make debugging your embedded designs much simpler.
 
-![Saleae logic analyzer with test circuit]({{ site.baseurl }}/assets/images/getting-started/saleae_example_circuit.jpg?style=center)
+![Saleae Logic Analyzer with test circuit]({{ site.baseurl }}/assets/images/getting-started/saleae_example_circuit.jpg?style=center)
 
 This tutorial will show you how to install the *Logic* software and analyze simulated digital signals. It will then cover how to analyze analog signals, digital logic, UART, SPI, and I<sup>2</sup>C in a live circuit.
 
@@ -41,7 +41,7 @@ On the front of your Logic Analyzer, you will find a set of headers used for con
 
 For each header, the top row of pins are your signal pins. They are numbered 0-7 (Logic 8) or 0-15 (Logic 16). All of the pins on the bottom row are intended to be connected to ground (or common) in your test circuit.
 
-![Annotated pins on the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_annotated_pins.png?style=center)
+![Annotated pins on the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_annotated_pins.png?style=center)
 
 <div class="notice--info">
     <b>Note:</b> The headers have a ground pin for each signal pin. For most low-speed or basic circuits, you can connect one ground pin as a reference for the whole circuit. If you want to measure high-speed digital signals or analog signals in a noisy environment, it's highly recommended that you connect a ground for each signal.
@@ -49,12 +49,16 @@ For each header, the top row of pins are your signal pins. They are numbered 0-7
 
 Each cable harness has an arrow on the top of the connector. This arrow should point up (same side as the Saleae logo) and to the left (the side with the 'S' in Saleae).
 
-![Plugging cable harness into the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_1.jpg?style=center)
+![Plugging cable harness into the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_1.jpg?style=center)
 
 If you only need to measure 1-4 signals, you can plug in just the first set of cables on the left side (channels 0 through 3). If you need more, you can attach an additional cable harness to channels 4-7. The Logic Pro 16 has an additional 8 channels available for your use.
 
 <div class="notice--info">
     <b>Note:</b> All channels are capable of measuring analog and digital signals between 0 and 5 V.
+</div>
+
+<div class="notice--danger">
+    <b>Danger!</b> Connecting the Logic Analyzer to voltages greater than +25 V or less than -25 V (even for a very short amount of time) can seriously damage the device.
 </div>
 
 To help you identify the channels, the colors of the wires on the cable harness match up to the resistor code:
@@ -65,7 +69,7 @@ On the Logic Pro 16, this color code is repeated for channels 8-15.
 
 The end of each test lead is terminated in a wrapped and crimped connector that will attach to standard 0.100-inch headers.
 
-![Close up of the Saleae logic analyzer female header]({{ site.baseurl }}/assets/images/getting-started/saleae_female_header.jpg?style=center)
+![Close up of the Saleae Logic Analyzer female header]({{ site.baseurl }}/assets/images/getting-started/saleae_female_header.jpg?style=center)
 
 Your kit also comes with test clips for each lead on the cable harness. Attach the crimped wire end into the back of the test clip. By pushing on the back of the test clip, you can attach the clip to wires, headers, DIP, and SOIC-type packages. If you need to measure signals from a finer-pitch part, you may want to consider soldering a small-gauge wire (e.g. 30 AWG) to an exposed pin, pad, or trace.
 
@@ -111,7 +115,7 @@ Depending on the model you have, the features may be different:
 </table>
 
 <div class="notice--warning">
-    <b>Warning:</b> The logic analyzer needs to send a lot of data very quickly over the USB lines. As a result, it is recommended that you plug the logic analyzer directly into an available USB port on your computer (i.e. not through a USB hub). Otherwise, you might get an error such as "We're sorry, but the device was not able to keep up with this sample rate."
+    <b>Warning:</b> The Logic Analyzer needs to send a lot of data very quickly over the USB lines. As a result, it is recommended that you plug the Logic Analyzer directly into an available USB port on your computer (i.e. not through a USB hub). Otherwise, you might get an error such as "We're sorry, but the device was not able to keep up with this sample rate."
 </div>
 
 ## Logic Software Installation
@@ -120,19 +124,19 @@ Download the Saleae Logic software by navigating to the [Saleae Downloads page](
 
 ### Windows
 
-Find and run the .exe installer that you downloaded. Follow the on-screen prompts to install any necessary drivers.
+Find and run the *.exe* installer that you downloaded. Follow the on-screen prompts to install any necessary drivers.
 
 If you run into any issues, you can try downloading the [Windows Standalone release](https://support.saleae.com/hc/en-us/articles/115005972023-saleae-logic-beta-software), which does not require running an installer. Note that you will need to [manually install the drivers](https://answers.microsoft.com/en-us/windows/forum/windows_10-hardware-winpc/how-to-install-and-update-hardware-drivers-in/a97bbbd1-9973-4d66-9a5b-291300006293) for the Logic Analyzer, which can be found in the *Drivers* folder.
 
 ### Mac
 
-After downloading the application, double-click on its icon, and drag the Logic.app into the Applications folder.
+After downloading the application, double-click on its icon, and drag the *Logic.app* into the Applications folder.
 
 ![Installing Saleae Logic on macOS]({{ site.baseurl }}/assets/images/getting-started/mac_install.png?style=center)
 
 ### Linux
 
-Download the .zip file and extract it. There is nothing to install, as the *Logic* application can be run directly from the extracted directory.
+Download the *.zip* file and extract it. There is nothing to install, as the *Logic* application can be run directly from the extracted directory.
 
 Before running the application, you will need to give permission to the application to access the hardware device. Make sure your Logic Analyzer is unplugged, open a command prompt, and navigate to the *Drivers* directory within the Logic application directory. From there, run *install_driver.sh*.
 
@@ -149,7 +153,7 @@ If you don't have access to the Logic Analyzer hardware yet, you can still use t
 
 ![Running a simulation in the Saleae Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_01.png?style=center)
 
-Use your mouse wheel or minus (-) key to zoom out. Click and drag on the main display to move the captured waveforms in the time domain. Hover your mouse pointer over some of the digital waveforms, Logic will give you an automatic reading of the width (w) of the high or low pulse in seconds (s), milliseconds (ms), or microseconds (μs). It will also take the measurement of the next pulse to give you an estimate of the frequency (f) and period (τ).
+Use your mouse wheel or minus (-) key to zoom out. Click and drag on the main display to move the captured waveforms in the time domain. If you hover your mouse pointer over some of the digital waveforms, Logic will give you an automatic reading of the width (w) of the high or low pulse in seconds (s), milliseconds (ms), or microseconds (μs). It will also take the measurement of the next pulse to give you an estimate of the frequency (f) and period (τ).
 
 ![Analyzing digital pulses in the Saleae Logic simulation]({{ site.baseurl }}/assets/images/getting-started/screen_02.png?style=center)
 
@@ -200,15 +204,15 @@ Restart the Logic software and verify that the calibration file was loaded succe
 
 ## How to Measure Digital Logic
 
-The easiest way to test your logic analyzer is to use it to measure digital signals, that is, voltages that transition between two discrete values, such as 0 V and 3.3 V.
+The easiest way to test your Logic Analyzer is to use it to measure digital signals, that is, voltages that transition between two discrete values, such as 0 V and 3.3 V.
 
 To demonstrate this, we have example code for the STM32 Nucleo-F446RE that can be uploaded via [Arduino](https://www.arduino.cc/), [mbed](https://os.mbed.com/), or as a project for the [AC6 System Workbench for STM32 (SW4STM32)](http://www.openstm32.org/) integrated development enviroment (IDE).
 
 ### Connect Hardware
 
-To begin, plug 2 cable harnesses into your Saleae Logic. Note that the arrow on the harness connector should be facing up and toward the left (the 'S' in Saleae on your logic analyzer). While the colors of the wires do not ultimately matter, it can be helpful to have them line up with the resistor color code (from left to right): black, brown, red, orange, yellow, green, blue, violet.
+To begin, plug 2 cable harnesses into your Saleae Logic Analyzer. Note that the arrow on the harness connector should be facing up and to the left (toward the 'S' in Saleae on your Logic Analyzer). While the colors of the wires do not ultimately matter, it can be helpful to have them line up with the resistor color code (from left to right): black, brown, red, orange, yellow, green, blue, violet.
 
-![Plugging second cable harness into the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_2.jpg?style=center)
+![Plugging second cable harness into the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_2.jpg?style=center)
 
 Connect the wires to the male header pins on the Nucleo board as shown in the diagram. Note that most of the inner male pins are connected to the female pins in the Arduino UNO configuration. For a full pinout of the Nucleo-F446RE, refer to the [pinout section on the mbed page](https://os.mbed.com/platforms/ST-Nucleo-F446RE/#nucleo-pinout).
 
@@ -216,7 +220,7 @@ Connect the wires to the male header pins on the Nucleo board as shown in the di
     Having trouble seeing the diagram? Click on the image to get a better view.
 </div>
 
-[![Connect Saleae logic analyzer to development board to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)
+[![Connect Saleae Logic Analyzer to development board to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/digital_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
@@ -234,15 +238,15 @@ Open the demo in your chosen IDE. Compile the program, and upload it to the Nucl
 
 ### Measure Signals
 
-Open the Logic software and make sure your logic analyzer is connected via USB (you should see "Connected" appear at the top of the window). Click on the **Device Settings Button** (the up/down arrow near *Start Simulation*). This will open the device settings window.  
+Open the Logic software and make sure your Logic Analyzer is connected via USB (you should see "Connected" appear at the top of the window). Click on the **Device Settings Button** (the up/down arrow near *Start*). This will open the device settings window.  
 
 Set the speed to **at least 50 MS/s** and the duration to **1 second** (length of time the analyzer will collect data). Click to enable **8 digital channels** (0 through 7 in the top row). Make sure **3.3+ Volts** is selected.
 
-![Configuring logic analyzer to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/screen_06.png?style=center)
+![Configuring Logic Analyzer to measure digital signals]({{ site.baseurl }}/assets/images/getting-started/screen_06.png?style=center)
 
 Click the **Device Settings Button** again to close the configuration window. You should see all 8 channels appear on the left side. Click **Start**. The software should take a moment to collect data, and show you the results to the right of their respective channels.
 
-![Capturing digital signals with the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_07.png?style=center)
+![Capturing digital signals with the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_07.png?style=center)
 
 Zoom in using your mouse wheel or the plus (+) key. Hover your mouse over a part of the waveform from Channel 0. You should see some text pop up, giving you some information about the pulses. The Logic software will automatically calculate the puslse width (w), the frequency (f), and the period (τ).
 
@@ -254,7 +258,7 @@ Sometimes, you need to measure a pulse or signal that happens sporadically. If y
 
 For example, we will configure the Logic software to begin capturing whenever Channel 7 (the most significant bit in our counter) switches from high to low (falling edge). This will center the capturing process around the point (t = 0) when the counter rolls over from 255 (0xFF) to 0 (0x00).
 
-By default, the logic analyzer should be configured to trigger on a rising edge for Channel 0. Click on the **Trigger Settings Button** for Channel 0 and click on the **Rising Edge** button, which should disable all triggers for the analyzer. Verify that the trigger buttons for all channels change to the rising edge icon.
+By default, the Logic Analyzer should be configured to trigger on a rising edge for Channel 0. Click on the **Trigger Settings Button** for Channel 0 and click on the **Rising Edge** button, which should disable all triggers for the analyzer. Verify that the trigger buttons for all channels change to the rising edge icon.
 
 ![Disable triggers in the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_09.png?style=center)
 
@@ -266,7 +270,7 @@ Press the **Start** button and wait while the logic analyzers captures and proce
 
 ![Viewing a waveform that has been captured around a trigger]({{ site.baseurl }}/assets/images/getting-started/screen_11.png?style=center)
 
-If you pan left on the waveforms, you should see that the logic analyzer is capable of capturing up to about 0.5 ms prior to the trigger point.
+If you pan left on the waveforms, you should see that the Logic Analyzer is capable of capturing up to about 0.5 ms prior to the trigger point.
 
 <div class="notice--info">
     <b>Note:</b> If you zoom in around the trigger point, you should see that not all pins on the microcontroller are capable of toggling at the exact same time. If you're curious about how to measure that time difference, keep reading! In the "How to Measure Analog Signals" section, we use the Timing Markers to measure differences in time. 
@@ -282,9 +286,9 @@ Example code is provided below for Arduino, mbed, and AC6 System Workbench.
 
 ### Connect Hardware
 
-For this example, you will only need 1 harness plugged into your logic analyzer. We will be using channel 0. Connect the channel 0 and GND wires to the Nucleo board as shown below. Note that pin PA_4 (A2 on the Arduino headers) is DAC_OUT1 (digital-to-analog converter output 1) on the Nucleo-F446RE.
+For this example, you will only need 1 harness plugged into your Logic Analyzer. We will be using channel 0. Connect the channel 0 and GND wires to the Nucleo board as shown below. Note that pin PA_4 (A2 on the Arduino headers) is DAC_OUT1 (digital-to-analog converter output 1) on the Nucleo-F446RE.
 
-[![Connect Saleae logic analyzer to development board to measure analog signals]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)
+[![Connect Saleae Logic Analyzer to development board to measure analog signals]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/dac_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
@@ -298,7 +302,7 @@ Open the demo in your chosen IDE. Compile the program, and upload it to the Nucl
 
 ### Measure the Signal
 
-Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+Open the Logic software with the Logic Analyzer plugged in. Click on the **Device Settings Button**.
 
 In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click the **analog Channel 0** to enable it, and click the **digital Channel 0** to disable it.
 
@@ -316,7 +320,7 @@ As you can see, the period is measured to be about 10 ms, which is close to the 
 
 ## How to Analyze UART
 
-Universal Asynchronous Receiver/Transmitter (UART) is a fairly simple protocol with two lines (transmit and receive) going between two devices. The lines are normally held high until one of the devices wish to communicate. At which point, the transmitting device pulls its transmit line low and sends out data with logic high being 1 and logic low being 0.
+Universal Asynchronous Receiver/Transmitter (UART) is a fairly simple protocol with two lines (transmit and receive) going between two devices. The lines are normally held high until one of the devices wishes to communicate. At which point, the transmitting device pulls its transmit line low and sends out data with logic high being 1 and logic low being 0.
 
 ### Connect Hardware
 
@@ -324,7 +328,7 @@ Note that on the Nucleo-F446RE, the UART lines used to communicate with the host
 
 Connect the GND wire to an available ground pin on the Nucleo. Connect Channel 0 to TX and connect Channel 1 to RX.
 
-[![Connect Saleae logic analyzer to development board to measure serial signals]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)
+[![Connect Saleae Logic Analyzer to development board to measure serial signals]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/uart_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
@@ -348,7 +352,7 @@ Connect to the Nucleo board over the assigned serial port with a baud rate of **
 
 ### Measure the Signal
 
-Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+Open the Logic software with the Logic Analyzer plugged in. Click on the **Device Settings Button**.
 
 In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click the **digital Channel 1** to enable it as well.
 
@@ -358,7 +362,7 @@ Click the **Device Settings Button** again to close the configuration window. Wi
 
 By default, triggering is set to occur on the rising edge of channel 0. UART is by default high, so we want to start capturing whenever the TX line drops low (*start bit*). Click the **Trigger Button** next to *Channel 0* to bring up the *Trigger Settings* pop-up. Select the **Trigger on Falling Edge** option.
 
-![Select falling edge option for triggering with the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_17.png?style=center)
+![Select falling edge option for triggering with the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_17.png?style=center)
 
 Click on the **Trigger Button** again to close the pop-up. Click **Start**, and you should see the Logic software tell you that it is waiting for a trigger.
 
@@ -382,15 +386,15 @@ Try measuring the time it takes for your Nucleo to capture and echo a letter, an
 
 Serial Peripheral Interface (SPI) is a communication protocol often used between processors and devices that require a relatively fast interface, such as shift registers, flash memory, and some sensors. It is a *synchronous* protocol, which means it requires a separate clock line so that the transmitter can tell the receiver when to sample the data line.
 
-Interestingly, SPI connections often rely on two data lines: MISO and MOSI. Because of this, data can be sent between the master and device at the same time (known as *full duplex*).
+Interestingly, SPI connections often rely on two data lines: MISO and MOSI. Because of this, data can be sent between the master and device at the same time (*full duplex*).
 
 ### Connect Hardware
 
 Even though the Nucleo-F446RE has an onboard analog-to-digital converter (ADC), the MCP3002 is an easy-to-use and inexpensive ADC that communicates over SPI, which makes it perfect for demonstrating the protocol.
 
-Connect the Nucleo to the MCP3002 and the MCP3002 to a 10k potentiometer as shown. Note that the SPI pins are also broken out to the male pins just to the right of the female Arduino headers on the Nucleo. This allows us to attach the Saleae logic analyzer wires.
+Connect the Nucleo to the MCP3002 and the MCP3002 to a 10k potentiometer as shown. Note that the SPI pins are also broken out to the male pins just to the right of the female Arduino headers on the Nucleo. This allows us to attach the Saleae Logic Analyzer wires.
 
-[![Connect Saleae logic analyzer to development board to measure SPI signals]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)
+[![Connect Saleae Logic Analyzer to development board to measure SPI signals]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/spi_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
@@ -410,7 +414,7 @@ Connect to the Nucleo board over the assigned serial port with a baud rate of **
 
 ### Measure the Signal
 
-Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+Open the Logic software with the Logic Analyzer plugged in. Click on the **Device Settings Button**.
 
 In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital Channel 0 enabled. Click **digital Channels 1-3** to enable them.
 
@@ -442,11 +446,11 @@ The 2 lines used in I<sup>2</sup>C are Serial Data Line (SDA) and Serial Clock L
 
 ### Connect Hardware
 
-One of the easiest to use I<sup>2</sup>C sensors is the inexpensive TMP102 temperature sensor. The sensor can be configured to drive an alert pin when certain temperature thresholds are met. However, we only need to worry about reading from the Temperature register, as on power up, the TMP102 will simply begin sampling and storing temperature data in that register.
+One of the easiest to use I<sup>2</sup>C sensors is the inexpensive TMP102 temperature sensor. The sensor can be configured to drive an alert pin when certain temperature thresholds are met. However, we only need to worry about reading from the Temperature register. On power up, the TMP102 will simply begin sampling and storing temperature data in that register.
 
-Connect the Nucleo to the TMP102 breakout board as shown in the following diagram. Note that GND, SDA, and SCL are broken out to the male pins to the right of the female Arduino headers on the Nucleo. This setup allows us to attach the Saleae logic analyzer wires.
+Connect the Nucleo to the TMP102 breakout board as shown in the following diagram. Note that GND, SDA, and SCL are broken out to the male pins to the right of the female Arduino headers on the Nucleo. This setup allows us to attach the Saleae Logic Analyzer wires.
 
-[![Connect Saleae logic analyzer to development board to measure I2C signals]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)
+[![Connect Saleae Logic Analyzer to development board to measure I2C signals]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)
 
 ### Run Demo Application
 
@@ -466,13 +470,13 @@ Connect to the Nucleo board over the assigned serial port with a baud rate of **
 
 ### Measure the Signal
 
-Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+Open the Logic software with the Logic Analyzer plugged in. Click on the **Device Settings Button**.
 
 In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only digital Channel 0 enabled. Click **digital Channel 1** to enable it as well.
 
 ![Setting up to capture I2C signals with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_27.png?style=center)
 
-Set the analyzer by clicking on the plus button (**+**) next to *Analyzers* on the right side. Select **I2C** to bring up the settings window. Leave everything as default and click **Save**.
+Set the protocol analyzer by clicking on the plus button (**+**) next to *Analyzers* on the right side. Select **I2C** to bring up the settings window. Leave everything as default and click **Save**.
 
 ![Setting the I2C lines in the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_28.png?style=center)
 
@@ -484,37 +488,39 @@ Click on the **Trigger Button** again to close the pop-up. Click **Start** to be
 
 Zoom in around the *0 s : 0 ms : 0 μs* mark, and you should see some I<sup>2</sup>C data. Click on the *gear icon* next to *I2C* under *Analyzers*. Click on **Hex** under *Display Radix* to show the interpreted data as hexadecimal.
 
-You should see a write operation and a read operation. Both should begin with the address of the TMP102, which is 0x48 as a 7-bit number. If we shift it left by 1 bit, we get 0x90, and the last bit determines the type of operation (0 for read and 1 for write).
+You should see a write operation and a read operation. Both should begin with the address of the TMP102, which is 0x48 as a 7-bit number. If we shift it left by 1 bit, we get 0x90, and the last bit determines the type of operation (0 for write and 1 for read).
 
 ![Reading I2C data with the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_30.png?style=center)
 
 If you look at the write operation, you should see that the address is followed by the memory location of the TMP102's *Temperature* register (0x00) and an *ACK* (line is low for 1 bit). Immediately following the write operation, you should see a read operation. Here, the microcontroller waits for 2 bytes to be sent by the TMP102. In the picture, the bytes returned are 0x017 0x30 (binary 0001 0111 0011 0000). The first byte is followed by an *ACK* (line kept low for 1 bit) and the second byte is followed by a *NACK* (line returned to high for 1 bit to indicate the end of the transmission).
 
+This binary data represents the temperature reading by the TMP102 and is interpreted in the program to produce a human-readable result (in Celsius). Try breathing on the sensor to change the reading and see if you can capture the results.
+
 ## Troubleshooting
 
-### I'm getting cross-talk from other sources
+### I'm getting cross-talk from other sources.
 
-Make sure you connect a ground wire for each signal wire on the logic analyzer.
+Make sure you connect a ground wire for each signal wire on the Logic Analyzer.
 
 ### How can you view the signals in real time?
 
 Real-time view is currently available in the [latest beta release of the Logic software](https://support.saleae.com/hc/en-us/articles/115005972023-saleae-logic-beta-software). Please note that this is an early release of the application and may not be stable on all systems.
 
-### While collecting data or waiting for a trigger, I get the error message: "We're sorry, but the device was not able to keep up with this sample rate"
+### While collecting data or waiting for a trigger, I get the error message: "We're sorry, but the device was not able to keep up with this sample rate."
 
-First, check to make sure that your logic analyzer is plugged directly into a USB port on your computer. Due to the high data rates required, having the analyzer plugged into a USB hub may result in errors.
+First, check to make sure that your Logic Analyzer is plugged directly into a USB port on your computer. Due to the high data rates required, having the analyzer plugged into a USB hub may result in errors.
 
 If the problem persists, try lowering the sampling rate (Settings > Speed).
 
-### How do I protect my Saleae logic analyzer from damage?
+### How do I protect my Saleae Logic Analyzer from damage?
 
 Avoid connecting the analyzer inputs to voltages greater than ±25 V.
 
-Common mode current can potentially damage the analyzer in the presence of a ground loop. For example, if your logic analyzer and device under test (DUT) have separate USB connections back to your computer, this can create a ground loop. If you were to accidentally brush one of the analyzer's ground probes against a power supply pin on the DUT (e.g. 5V) with a ground loop present, you risk sending large amounts of current through the analyzer and damaging it.
+Common mode current can potentially damage the analyzer in the presence of a ground loop. For example, if your Logic Analyzer and device under test (DUT) have separate USB connections back to your computer, this can create a ground loop. If you were to accidentally brush one of the analyzer's ground probes against a power supply pin on the DUT (e.g. 5V) with a ground loop present, you risk sending large amounts of current through the analyzer and damaging it.
 
-To learn more about ground loops and safety precautions for your logic analyzer, refer to [this article](https://support.saleae.com/hc/en-us/articles/208667786-What-Should-I-Do-to-Avoid-Accidental-Damage-to-the-Device-).
+To learn more about ground loops and safety precautions for your Logic Analyzer, refer to [this article](https://support.saleae.com/hc/en-us/articles/208667786-What-Should-I-Do-to-Avoid-Accidental-Damage-to-the-Device-).
 
-### I'm working with a protocol that isn't in the Logic software
+### I'm working with a protocol that isn't in the Logic software.
 
 Good news! You can create your own protocol for the Logic software using the [Saleae Analyzer SDK](https://support.saleae.com/hc/en-us/articles/115005987726-Protocol-Analyzer-SDK).
 
