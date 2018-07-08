@@ -9,33 +9,39 @@ toc: true
 
 The Saleae Logic Analyzer is a powerful tool capable of capturing multiple signals from a digital circuit and displaying that information in the form of timing diagrams. Saleae's *Logic* software can help you decode a variety of digital protocols, including UART, SPI, I<sup>2</sup>C, 1-Wire, I<sup>2</sup>S, CAN, USB, and many more. These features can make debugging your embedded designs much simpler.
 
-%%%Anlyzer plugged into breadboard circuit%%%
+![Saleae logic analyzer with test circuit]({{ site.baseurl }}/assets/images/getting-started/saleae_example_circuit.jpg?style=center)
 
-This tutorial will show you how to install the *Logic* software and analyze simulated digital signals. It will then cover how to analyze digital logic, UART, SPI, and I<sup>2</sup>C in a live circuit.
+This tutorial will show you how to install the *Logic* software and analyze simulated digital signals. It will then cover how to analyze analog signals, digital logic, UART, SPI, and I<sup>2</sup>C in a live circuit.
 
 ### Required Materials
 
 To follow along with this guide, you will need the following equipment:
 
-%%%TODO: PHOTOS OF EACH%%%
+![Required hardware for this guide]({{ site.baseurl }}/assets/images/getting-started/saleae_required_parts.jpg?style=center)
 
- * One of Logic Analyzers
- * Nucleo-F446RE
- * SparkFun BME280 (or TMP102/MCP3002)
- * Breadboard
- * Hookup wires
+ * One of the Saleae logic analyzers:
+   - [Saleae Logic 8](https://usd.saleae.com/products/saleae-logic-8)
+   - [Saleae Logic Pro 8](https://usd.saleae.com/products/saleae-logic-pro-8)
+   - [Saleae Logic Pro 16](https://usd.saleae.com/products/saleae-logic-pro-16)
+ * [Nucleo-F446RE](https://www.digikey.com/product-detail/en/stmicroelectronics/NUCLEO-F446RE/497-15882-ND/5347712)
+ * [MCP3002 10-bit analog-to-digital converter (ADC)](https://www.digikey.com/product-detail/en/microchip-technology/MCP3002-I-P/MCP3002-I-P-ND/319412)
+ * [10k potentiometer](https://www.digikey.com/product-detail/en/sparkfun-electronics/COM-09806/1568-1616-ND/7319606)
+ * [TMP102 temperature sensor breakout board](https://www.digikey.com/product-detail/en/sparkfun-electronics/SEN-13314/1568-1520-ND/6797646)
+ * [Male 0.100 inch headers](https://www.digikey.com/product-detail/en/sullins-connector-solutions/PRPC040SAAN-RC/S1011EC-40-ND/2775214)
+ * [Breadboard](https://www.digikey.com/product-detail/en/bud-industries/BB-32621/377-2094-ND/4156445)
+ * [Jumper wires](https://www.digikey.com/product-detail/en/sparkfun-electronics/PRT-12795/1568-1512-ND/5993860)
 
 ## Hardware Overview
 
 The Logic Analyzer is a small box with a lot of processing power.
 
-%%%OVERVIEW SHOT OF ANAYLZER%%%
+![Required hardware for this guide]({{ site.baseurl }}/assets/images/getting-started/saleae_logic_analyzer.jpg?style=center)
 
 On the front of your Logic Analyzer, you will find a set of headers used for connecting the cable harnesses, which come with your Logic Analyzer kit. You are welcome to use female jumper wires, as well, if you wish to individually connect pins.
 
 For each header, the top row of pins are your signal pins. They are numbered 0-7 (Logic 8) or 0-15 (Logic 16). All of the pins on the bottom row are intended to be connected to ground (or common) in your test circuit.
 
-%%%ANNOTATED FRONT OF ANALYZER--BLUR OUT PARTS%%%
+![Annotated pins on the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_annotated_pins.png?style=center)
 
 <div class="notice--info">
     <b>Note:</b> The headers have a ground pin for each signal pin. For most low-speed or basic circuits, you can connect one ground pin as a reference for the whole circuit. If you want to measure high-speed digital signals or analog signals in a noisy environment, it's highly recommended that you connect a ground for each signal.
@@ -123,7 +129,7 @@ Depending on the model you have, the features may be different:
 
 ## Logic Software Installation
 
-Download the Saleae Logic software by navigating to the [Salaea Downloads page](https://www.saleae.com/downloads/). Select your operating system, and click the download button.
+Download the Saleae Logic software by navigating to the [Saleae Downloads page](https://www.saleae.com/downloads/). Select your operating system, and click the download button.
 
 ### Windows
 
@@ -140,8 +146,6 @@ After downloading the application, double-click on its icon, and drag the Logic.
 ### Linux
 
 Download the .zip file and extract it. There is nothing to install, as the *Logic* application can be run directly from the extracted directory.
-
-%%%SCREENSHOT OF LOGIC APP FILE%%%
 
 Before running the application, you will need to give permission to the application to access the hardware device. Make sure your Logic Analyzer is unplugged, open a command prompt, and navigate to the *Drivers* directory within the Logic application directory. From there, run *install_driver.sh*.
 
@@ -411,13 +415,13 @@ Open the serial terminal program that you downloaded from the UART example.
  
 Connect to the Nucleo board over the assigned serial port with a baud rate of **115200**, 8 data bits, no parity bit, and 1 stop bit (**8-N-1**). Open the connection, and you should see the voltage from the MCP3002 being reported to you in regular intervals. Try turning the knob on the potentiometer to see the voltage change.
 
-![Testing the serial echo program]({{ site.baseurl }}/assets/images/getting-started/screen_21.png?style=center)
+![Testing the SPI program]({{ site.baseurl }}/assets/images/getting-started/screen_21.png?style=center)
 
 ### Measure the Signal
 
 Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
 
-In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital channel 0 enabled. Click **digital Channels 1-3** to enable them.
+In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only the digital Channel 0 enabled. Click **digital Channels 1-3** to enable them.
 
 ![Setting up to capture SPI signals with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_22.png?style=center)
 
@@ -439,22 +443,102 @@ Above Channel 0 (MOSI), you should see the data that we are transmitting out fro
 
 Adjust the potentiometer and see if you get different data on the MISO line when you sample again.
 
-## I2C
+## How to Analyze I<sup>2</sup>C
 
-I2C
+Inter-Integrated Circuit (I<sup>2</sup>C, I2C, or IIC) is a 2-wire communication protocol that allows multiple low-speed peripherals, such as sensors, to be attached to the same bus. Normally, a single microprocessor or microcontroller is configured as the master, which initiates all communication on the bus.
 
-![Installing Saleae Logic on macOS]({{ site.baseurl }}/assets/images/getting-started/test_circuit_01.png?style=center)
+The 2 lines used in I<sup>2</sup>C are Serial Data Line (SDA) and Serial Clock Line (SCL). The lines are [open collector or open drain](https://en.wikipedia.org/wiki/Open_collector), which means the drivers on the master or devices can pull the lines low but cannot pull them high. This configuration prevents damage to the drivers when more than one device attempts to communicate on the bus at the same time.
+
+### Connect Hardware
+
+One of the easiest to use I<sup>2</sup>C sensors is the inexpensive TMP102 temperature sensor. The sensor can be configured to drive an alert pin when certain temperature thresholds are met. However, we only need to worry about reading from the Temperature register, as on power up, the TMP102 will simply begin sampling and storing temperature data in that register.
+
+Connect the Nucleo to the TMP102 breakout board as shown in the following diagram. Note that GND, SDA, and SCL are broken out to the male pins to the right of the female Arduino headers on the Nucleo. This setup allows us to attach the Saleae logic analyzer wires.
+
+[![Connect Saleae logic analyzer to development board to measure I2C signals]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)]({{ site.baseurl }}/assets/images/getting-started/i2c_circuit_fritzing.png?style=center)
+
+### Run Demo Application
+
+Download the example code for your IDE:
+
+ * [I2C Example - Arduino]({{ site.baseurl }}/assets/code/i2c_example_arduino.zip)
+ * [I2C Example - mbed]({{ site.baseurl }}/assets/code/i2c_example_mbed.zip)
+ * [I2C Example - SW4STM32]({{ site.baseurl }}/assets/code/i2c_example_sw4stm32.zip)
+
+Open the demo in your chosen IDE. Compile the program, and upload it to the Nucleo-F446RE development board.
+
+Open the serial terminal program that you downloaded from the UART example.
+ 
+Connect to the Nucleo board over the assigned serial port with a baud rate of **115200**, 8 data bits, no parity bit, and 1 stop bit (**8-N-1**). Open the connection, and you should see the temperature (in Celsius) being reported to you in regular intervals. Try breathing on the TMP102 sensor to change the readings.
+
+![Testing the I2C program]({{ site.baseurl }}/assets/images/getting-started/screen_26.png?style=center)
+
+### Measure the Signal
+
+Open the Logic software with the logic analyzer plugged in. Click on the **Device Settings Button**.
+
+In the device settings window, set the speed to **at least 50 MS/s** and the duration to **1 second**. Click both **Clear** buttons to disable all channels, leaving only digital Channel 0 enabled. Click **digital Channel 1** to enable it as well.
+
+![Setting up to capture I2C signals with Logic]({{ site.baseurl }}/assets/images/getting-started/screen_27.png?style=center)
+
+Set the analyzer by clicking on the plus button (**+**) next to *Analyzers* on the right side. Select **I2C** to bring up the settings window. Leave everything as default and click **Save**.
+
+![Setting the I2C lines in the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_28.png?style=center)
+
+The data line (SDA) is normally the first signal to change during an I<sup>2</sup>C transfer. Because the lines are *open drain*, they will be nominally high, which means that we need to watch for a high-to-low transition. Click on the **Trigger Button** next to *Channel 0 (I2C - SDA)*, and select the **Trigger on Falling Edge** option.
+
+![Selecting a falling edge trigger for I2C SDA line]({{ site.baseurl }}/assets/images/getting-started/screen_29.png?style=center)
+
+Click on the **Trigger Button** again to close the pop-up. Click **Start** to begin collecting data. Because we told the Nucleo to read from the sensor every 0.2 seconds, we should begin collecting data right away.
+
+Zoom in around the *0 s : 0 ms : 0 μs* mark, and you should see some I<sup>2</sup>C data. Click on the *gear icon* next to *I2C* under *Analyzers*. Click on **Hex** under *Display Radix* to show the interpreted data as hexadecimal.
+
+You should see a write operation and a read operation. Both should begin with the address of the TMP102, which is 0x48 as a 7-bit number. If we shift it left by 1 bit, we get 0x90, and the last bit determines the type of operation (0 for read and 1 for write).
+
+![Reading I2C data with the Logic software]({{ site.baseurl }}/assets/images/getting-started/screen_30.png?style=center)
+
+If you look at the write operation, you should see that the address is followed by the memory location of the TMP102's *Temperature* register (0x00) and an *ACK* (line is low for 1 bit). Immediately following the write operation, you should see a read operation. Here, the microcontroller waits for 2 bytes to be sent by the TMP102. In the picture, the bytes returned are 0x017 0x30 (binary 0001 0111 0011 0000). The first byte is followed by an *ACK* (line kept low for 1 bit) and the second byte is followed by a *NACK* (line returned to high for 1 bit to indicate the end of the transmission).
 
 ## Troubleshooting
 
-How to fix things
+### I'm getting cross-talk from other sources
 
-Ground Loops
+Make sure you connect a ground wire for each signal wire on the logic analyzer.
 
-Contact Support
+### How can you view the signals in real time?
+
+Real-time view is currently available in the [latest beta release of the Logic software](https://support.saleae.com/hc/en-us/articles/115005972023-saleae-logic-beta-software). Please note that this is an early release of the application and may not be stable on all systems.
+
+### While collecting data or waiting for a trigger, I get the error message: "We're sorry, but the device was not able to keep up with this sample rate"
+
+First, check to make sure that your logic analyzer is plugged directly into a USB port on your computer. Due to the high data rates required, having the analyzer plugged into a USB hub may result in errors.
+
+If the problem persists, try lowering the sampling rate (Settings > Speed).
+
+### How do I protect my Saleae logic analyzer from damage?
+
+Avoid connecting the analyzer inputs to voltages greater than ±25 V.
+
+Common mode current can potentially damage the analyzer in the presence of a ground loop. For example, if your logic analyzer and device under test (DUT) have separate USB connections back to your computer, this can create a ground loop. If you were to accidentally brush one of the analyzer's ground probes against a power supply pin on the DUT (e.g. 5V) with a ground loop present, you risk sending large amounts of current through the analyzer and damaging it.
+
+To learn more about ground loops and safety precautions for your logic analyzer, refer to [this article](https://support.saleae.com/hc/en-us/articles/208667786-What-Should-I-Do-to-Avoid-Accidental-Damage-to-the-Device-).
+
+### I'm working with a protocol that isn't in the Logic software
+
+Good news! You can create your own protocol for the Logic software using the [Saleae Analyzer SDK](https://support.saleae.com/hc/en-us/articles/115005987726-Protocol-Analyzer-SDK).
+
+### Where can I go for help?
+
+Take a look at the [Saleae Troubleshooting & Information page](https://support.saleae.com/hc/en-us/categories/201256726-Troubleshooting-Information) to see if your question has been asked before.
+
+If you are still running into trouble, [contact Saleae directly](https://support.saleae.com/hc/en-us/requests/new).
 
 ## Resources
 
-Check out these other guides.
+If you would like to learn more about the different protocols, check out these guides:
 
-Datasheets, User's Guide, 
+ * [Asynchronous Serial](https://support.saleae.com/hc/en-us/articles/115005987086-Learn-Asynchronous-Serial)
+ * [SPI - Serial Peripheral Interface](https://support.saleae.com/hc/en-us/articles/115005971423-Learn-SPI-Serial-Peripheral-Interface)
+ * [I2C - Inter-Integrated Circuit](https://support.saleae.com/hc/en-us/articles/115005987106-Learn-I2C-Inter-Integrated-Circuit)
+ 
+Datasheets and the Saleae User's Guide can be found on [this page](https://support.saleae.com/hc/en-us/articles/115005971303-PDF-Users-Guide-Specifications-and-Data-Sheets)
