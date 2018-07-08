@@ -206,7 +206,7 @@ Restart the Logic software and verify that the calibration file was loaded succe
 
 The easiest way to test your Logic Analyzer is to use it to measure digital signals, that is, voltages that transition between two discrete values, such as 0 V and 3.3 V.
 
-To demonstrate this, we have example code for the STM32 Nucleo-F446RE that can be uploaded via [Arduino](https://www.arduino.cc/), [mbed](https://os.mbed.com/), or as a project for the [AC6 System Workbench for STM32 (SW4STM32)](http://www.openstm32.org/) integrated development enviroment (IDE).
+To demonstrate this, we have example code for the STM32 Nucleo-F446RE that can be uploaded via [Arduino](https://www.arduino.cc/), [mbed](https://os.mbed.com/), or as a project for the [AC6 System Workbench for STM32 (SW4STM32)](http://www.openstm32.org/) integrated development environment (IDE).
 
 ### Connect Hardware
 
@@ -248,7 +248,7 @@ Click the **Device Settings Button** again to close the configuration window. Yo
 
 ![Capturing digital signals with the Saleae Logic Analyzer]({{ site.baseurl }}/assets/images/getting-started/screen_07.png?style=center)
 
-Zoom in using your mouse wheel or the plus (+) key. Hover your mouse over a part of the waveform from Channel 0. You should see some text pop up, giving you some information about the pulses. The Logic software will automatically calculate the puslse width (w), the frequency (f), and the period (τ).
+Zoom in using your mouse wheel or the plus (+) key. Hover your mouse over a part of the waveform from Channel 0. You should see some text pop up, giving you some information about the pulses. The Logic software will automatically calculate the pulse width (w), the frequency (f), and the period (τ).
 
 ![Measuring pulse width, frequency, and period with Saleae Logic]({{ site.baseurl }}/assets/images/getting-started/screen_08.png?style=center)
 
@@ -280,7 +280,7 @@ If you pan left on the waveforms, you should see that the Logic Analyzer is capa
 
 One useful feature of your Saleae Logic Analyzer is its ability to measure analog signals (from 0 to 5 V).  As such, it can function as an oscilloscope with up to 8 channels (for the Logic 8 and Logic Pro 8) or 16 channels (for the Logic Pro 16).
 
-Depending on the number of channels you use, the Logic 8 can sample up to 10 MS/s (bandwidth of 1 MHz). The Logic Pro 8 and Logic Pro 16 can sample up to 50 MS/s (bandwitch of 5 MHz).
+Depending on the number of channels you use, the Logic 8 can sample up to 10 MS/s (bandwidth of 1 MHz). The Logic Pro 8 and Logic Pro 16 can sample up to 50 MS/s (bandwidth of 5 MHz).
 
 Example code is provided below for Arduino, mbed, and AC6 System Workbench.
 
