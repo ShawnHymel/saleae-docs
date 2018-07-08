@@ -49,7 +49,7 @@ For each header, the top row of pins are your signal pins. They are numbered 0-7
 
 Each cable harness has an arrow on the top of the connector. This arrow should point up (same side as the Saleae logo) and to the left (the side with the 'S' in Saleae).
 
-%%%CLOSE UP OF ARROW GOING INTO PORT%%%
+![Plugging cable harness into the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_1.jpg?style=center)
 
 If you only need to measure 1-4 signals, you can plug in just the first set of cables on the left side (channels 0 through 3). If you need more, you can attach an additional cable harness to channels 4-7. The Logic Pro 16 has an additional 8 channels available for your use.
 
@@ -59,30 +59,17 @@ If you only need to measure 1-4 signals, you can plug in just the first set of c
 
 To help you identify the channels, the colors of the wires on the cable harness match up to the resistor code:
 
-%%%ANNOTATED WIRES AND COLORS%%%
-
-<table>
-<tr>
-    <th style="text-align:center; background-color:black">Ch 0</th>
-    <th style="text-align:center; background-color:brown">Ch 1</th>
-    <th style="text-align:center; background-color:red">Ch 2</th>
-    <th style="text-align:center; background-color:orange">Ch 3</th>
-    <th style="text-align:center; background-color:yellow">Ch 4</th>
-    <th style="text-align:center; background-color:green">Ch 5</th>
-    <th style="text-align:center; background-color:blue">Ch 6</th>
-    <th style="text-align:center; background-color:purple">Ch 7</th>
-</tr>
-</table>
+![Annotated wires on the Saleae harness]({{ site.baseurl }}/assets/images/getting-started/saleae_annotated_wires.png?style=center)
 
 On the Logic Pro 16, this color code is repeated for channels 8-15.
 
 The end of each test lead is terminated in a wrapped and crimped connector that will attach to standard 0.100-inch headers.
 
-%%%CLOSE UP OF BARE HEADER%%%
+![Close up of the Saleae logic analyzer female header]({{ site.baseurl }}/assets/images/getting-started/saleae_female_header.jpg?style=center)
 
 Your kit also comes with test clips for each lead on the cable harness. Attach the crimped wire end into the back of the test clip. By pushing on the back of the test clip, you can attach the clip to wires, headers, DIP, and SOIC-type packages. If you need to measure signals from a finer-pitch part, you may want to consider soldering a small-gauge wire (e.g. 30 AWG) to an exposed pin, pad, or trace.
 
-%%%TEST CLIP ON MCP3002 ON BREADBOARD%%%
+![Saleae test clips on a DIP]({{ site.baseurl }}/assets/images/getting-started/saleae_test_clips.jpg?style=center)
 
 If you were to pry open your Logic Analyzer (not recommended), you would find a Xilinx Spartan 6 FPGA and an 8-channel analog-to-digital converter (2 ADCs on the Logic Pro 16). Together, these work in tandem to sample signals and stream data back to your computer for analysis in the Logic software.
 
@@ -176,6 +163,10 @@ Calibration information for your Logic Analyzer is generated at the factory, req
 
 Plug your Saleae Logic Analyzer into your computer. When you open the Logic software, it will identify your unique Logic Analyzer serial code. This information can be used to download the Logic Analyzer's calibration file. By default, the Logic software will attempt to automatically download the calibration file from the Internet. Without an Internet connection, you will need to manually download the file elsewhere.
 
+<div class="notice--info">
+    <b>Note:</b> Once you have downloaded the calibration file for your device, periodic calibration is not required.
+</div>
+
 ### Automatically Download Calibration File
 
 Make sure your computer is connected to the Internet. With the Logic Analyzer plugged in, open the Logic software. Click on the **Options** button in the top-right corner. Click on **Preferences** and navigate to the **Calibration Info** tab. You should see the calibration information filled out for your device.
@@ -217,7 +208,7 @@ To demonstrate this, we have example code for the STM32 Nucleo-F446RE that can b
 
 To begin, plug 2 cable harnesses into your Saleae Logic. Note that the arrow on the harness connector should be facing up and toward the left (the 'S' in Saleae on your logic analyzer). While the colors of the wires do not ultimately matter, it can be helpful to have them line up with the resistor color code (from left to right): black, brown, red, orange, yellow, green, blue, violet.
 
-%%%CLOSE UP OF PLUGGING IN HARNESSES%%%
+![Plugging second cable harness into the Saleae logic analyzer]({{ site.baseurl }}/assets/images/getting-started/saleae_harness_2.jpg?style=center)
 
 Connect the wires to the male header pins on the Nucleo board as shown in the diagram. Note that most of the inner male pins are connected to the female pins in the Arduino UNO configuration. For a full pinout of the Nucleo-F446RE, refer to the [pinout section on the mbed page](https://os.mbed.com/platforms/ST-Nucleo-F446RE/#nucleo-pinout).
 
